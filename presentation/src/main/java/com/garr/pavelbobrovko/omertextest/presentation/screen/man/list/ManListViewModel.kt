@@ -6,7 +6,7 @@ import com.garr.pavelbobrovko.domain.useCases.GetManUseCase
 import com.garr.pavelbobrovko.omertextest.app.TestApp
 import com.garr.pavelbobrovko.omertextest.presentation.base.BaseViewModel
 import com.garr.pavelbobrovko.omertextest.presentation.screen.man.ManRouter
-import com.garr.pavelbobrovko.omertextest.presentation.screen.man.list.adapter.ManListAdapter
+import com.garr.pavelbobrovko.omertextest.presentation.screen.man.list.items.ManListAdapter
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 

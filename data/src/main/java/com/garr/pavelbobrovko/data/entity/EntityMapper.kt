@@ -1,35 +1,30 @@
 package com.garr.pavelbobrovko.data.entity
 
-import android.util.Log
 import com.garr.pavelbobrovko.domain.entity.Man
 
-fun List<TextInfoApiResponse>.transformToDomainManList(imageApiResponse: Array<String> ): List<Man>{
-    val list: List<Man> = imageApiResponse.transformToPathOfManList()
+fun ArrayList<TextInfoApiResponse>.transformToDomainManList(imageApiResponse: ArrayList<String> ): ArrayList<Man>{
 
-    val listSize: Int
-    if (list.size < this.size){
-        listSize = list.size
-    }else listSize = this.size
+    if (this.size> imageApiResponse.size){
+        return imageApiResponse.mapIndexed { position, photoUrl ->
+            photoUrl.transformToMan(this[position])
+        } as ArrayList<Man>
+    } else {
+         return this.mapIndexed{position, textInfoResp ->
+             if (!imageApiResponse.isEmpty()) {
+                 textInfoResp.transformToMan(imageApiResponse[position])
+             } else {
+                 textInfoResp.transformToMan(null)
+             }
 
-    for (i in 0 until listSize - 1){
-        val resp = this[i]
-        val man = list[i]
-        man.id = resp.id.toString()
-        man.name = resp.name
-        man.about = resp.body
-        man.email = resp.email
-    }
-
-    return list
-}
-
-private fun Array<String>.transformToPathOfManList(): List<Man>{
-    Log.d("myLogs", "list.size: ${this.toString()}")
-    return this.map {
-        it.transformToPathOfMan()
+         } as ArrayList<Man>
     }
 }
 
-private fun String.transformToPathOfMan(): Man{
-    return Man(photoUrl = this)
+private fun String.transformToMan(textInfoResp: TextInfoApiResponse): Man{
+    return Man(photoUrl = this, id = textInfoResp.id.toString(),name = textInfoResp.name,
+        email = textInfoResp.email, about = textInfoResp.body)
+}
+
+private fun TextInfoApiResponse.transformToMan(imageList: String?): Man{
+    return Man(id = id.toString(),name = name,email = email,about = body,photoUrl = imageList ?: "")
 }

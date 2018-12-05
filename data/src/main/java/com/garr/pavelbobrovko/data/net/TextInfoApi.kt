@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface TextInfoApi {
 
     @GET("comments")
-    fun getMan(): Observable<List<TextInfoApiResponse>>
+    fun getMan(): Observable<ArrayList<TextInfoApiResponse>>
 
 }

@@ -4,7 +4,7 @@ import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import com.garr.pavelbobrovko.omertextest.BR
 
-class BaseViewHolder<Entity,
+abstract class BaseViewHolder<Entity,
         VM: BaseItemViewModel<Entity>,
         Binding: ViewDataBinding>
         (val binding: Binding, val viewModel: VM)

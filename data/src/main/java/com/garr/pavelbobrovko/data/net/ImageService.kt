@@ -8,7 +8,7 @@ class ImageService(apiUrl: String): RestService(apiUrl) {
     private lateinit var restApi: ImageApi
 
     private val method = "flickr.photos.getRecent"
-    private val apiKey = "b9cb8775e4c743d93368712fa6d4a791"
+    private val apiKey = "cbf96787e709bb6e826e0f9244ed5cef"
     private val format = "json"
     private val nojsoncallback = 1
 

@@ -11,7 +11,7 @@ class TextInfoService( apiUrl: String): RestService(apiUrl) {
         restApi = retrofit.create(TextInfoApi::class.java)
     }
 
-    fun get(): Observable<List<TextInfoApiResponse>>{
+    fun get(): Observable<ArrayList<TextInfoApiResponse>>{
         return restApi.getMan()
     }
 }
